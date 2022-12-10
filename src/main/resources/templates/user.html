@@ -43,44 +43,54 @@
         <div class="col-2" style="background-color: #FFFFFF">
             <div class="row justify-content">
                 <div class="btn-group-vertical justify-content">
-                <a class="btn btn-primary btn-md" href="/user" role="button">User</a>
+                    <a class="btn btn-primary btn-md" href="/user" role="button">User</a>
+                </div>
             </div>
         </div>
-    </div>
 
 
         <div class="col-md-10">
             <h2>User information-page</h2>
             <div class="container-fluid">
+
+
+                <div class="card">
+                    <table class="table table-striped"> <!--таблица с полосатыми рядами-->
+                        <div class="card-header">
+                            <h4>About user</h4>
+                        </div>
+                        <div class="card-body">
+
+
+                            <thead>
+                            <tbody>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Role</th>
+                            </tr>
+                            </thead>
+
+                            <tr th:object="${user}">
+                                <td th:text="${user.getId()}"></td>
+                                <td th:text="${user.getName()}"></td>
+                                <td th:text="${user.getLastname()}"></td>
+                                <td th:text="${user.getAge()}"></td>
+                                <td th:text="${user.getEmail()}"></td>
+                                <td th:text="${user.getPassword()}"></td>
+                                <td th:text="${roles}"></td>
+                            </tr>
+                            </tbody>
+                        </div>
+                    </table>
+
+                </div>
             </div>
-            <div class="card">
-            </div>
-
-            <table boarder="1">
-                <thead>
-                <tr>
-
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Role</th>
-                </tr>
-                </thead>
-
-                <tr th:object="${user}">
-                    <td th:text="${user.getId()}"></td>
-                    <td th:text="${user.getName()}"></td>
-                    <td th:text="${user.getLastname()}"></td>
-                    <td th:text="${user.getAge()}"></td>
-                    <td th:text="${user.getEmail()}"></td>
-                    <td th:text="${user.getPassword()}"></td>
-                    <td th:text="${user.getRoles()}"></td>
-                </tr>
-
-            </table>
         </div>
     </div>
 </div>
@@ -89,7 +99,7 @@
 
 <br>
 
-<h4><a href="/admin">Если есть права админа, то можешь перейти в Админку </a></h4>
+<!--<h4><a href="/admin">Если есть права админа, то можешь перейти в Админку </a></h4>-->
 
 <br>
 
