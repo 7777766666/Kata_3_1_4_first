@@ -18,13 +18,17 @@
         <div class="navbar-header text-white">
             <ul class="list-inline">
                 <li class="list-inline-item"><h5 th:text="${user.getEmail()}"></h5> </li>
-                <li class="list-inline-item"><h3 class="lead" th:text=" ' with roles: ' + ${roles}"></h3> </li>
+                <li class="list-inline-item"><h3 class="lead" th:text=" ' with roles: ' + ${roles}"></h3> </li> <!--class="lead" меняем шрифт   -->
+
             </ul>
         </div>
 
         <div>
             <form method="post" name="logout" th:action="@{/logout}">
-                <input type="submit" value="Разлогиниться">
+                <div class="text-forLogoutRight  ">
+                    <input class="btn btn-link text-second "  type="submit" value="Logout" style="color: #97948D; text-decoration: none" >
+                </div>
+
             </form>
 
         </div>
