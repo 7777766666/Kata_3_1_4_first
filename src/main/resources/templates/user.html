@@ -26,7 +26,7 @@
         <div>
             <form method="post" name="logout" th:action="@{/logout}">
                 <div class="text-forLogoutRight  ">
-                    <input class="btn btn-link text-second "  type="submit" value="Logout" style="color: #97948D; text-decoration: none" >
+                    <input class="btn btn-link text-second "  type="submit" value="Logout" style="color: #97948D; text-decoration: none" >  <!--убираем подчеркивание текст декоратион-->
                 </div>
 
             </form>
@@ -38,31 +38,55 @@
 <br/>
 <br/>
 
-<table boarder="1">
-    <thead>
-    <tr>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2" style="background-color: #FFFFFF">
+            <div class="row justify-content">
+                <div class="btn-group-vertical justify-content">
+                <a class="btn btn-primary btn-md" href="/user" role="button">User</a>
+            </div>
+        </div>
+    </div>
 
-        <th>Id</th>
-        <th>Name</th>
-        <th>Lastname</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Role</th>
-    </tr>
-    </thead>
 
-    <tr th:object="${user}">
-        <td th:text="${user.getId()}"></td>
-        <td th:text="${user.getName()}"></td>
-        <td th:text="${user.getLastname()}"></td>
-        <td th:text="${user.getAge()}"></td>
-        <td th:text="${user.getEmail()}"></td>
-        <td th:text="${user.getPassword()}"></td>
-        <td th:text="${user.getRoles()}"></td>
-    </tr>
+        <div class="col-md-10">
+            <h2>User information-page</h2>
+            <div class="container-fluid">
+            </div>
+            <div class="card">
+            </div>
 
-</table>
+            <table boarder="1">
+                <thead>
+                <tr>
+
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                </tr>
+                </thead>
+
+                <tr th:object="${user}">
+                    <td th:text="${user.getId()}"></td>
+                    <td th:text="${user.getName()}"></td>
+                    <td th:text="${user.getLastname()}"></td>
+                    <td th:text="${user.getAge()}"></td>
+                    <td th:text="${user.getEmail()}"></td>
+                    <td th:text="${user.getPassword()}"></td>
+                    <td th:text="${user.getRoles()}"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
 <br>
 
 <h4><a href="/admin">Если есть права админа, то можешь перейти в Админку </a></h4>
