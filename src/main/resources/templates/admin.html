@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Список всех пользователей</title>
+</head>
+<body>
+
+<div>
+
+    <table border="1">
+        <caption>
+            <h1>Список пользователей</h1>
+        </caption>
+        <tr>
+
+            <th>Id</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Roles</th>
+
+            <th>Действия</th>
+        </tr>
+        <tr th:each="user : ${userList}">
+            <td th:utext="${user.getId()}">VALUE</td>
+            <td th:utext="${user.getName()}">VALUE</td>
+            <td th:utext="${user.getLastname()}">VALUE</td>
+            <td th:utext="${user.getAge()}">VALUE</td>
+            <td th:utext="${user.getEmail()}">VALUE</td>
+            <td th:utext="${user.getPassword()}">VALUE</td>
+            <td>
+                <div th:each="role:${user.getRoles()}">[[${role.getName()}]]</div>
+            </td>
+
+            <td>
+                <a th:href="@{/admin/editUser/{id}(id=${user.getId()})}">
+                    <input type="submit" value="РЕДАКТИРОВАТЬ"/>
+                </a>
+                <br>
+                <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.getId()})}">
+                    <input type="submit" value="УДАЛИТЬ"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <h4><a href="/admin/newUserAdmin">Добавить пользователя</a></h4>
+
+
+    <hr/>
+    <a href="/user">Личная страница пользователя с правами Админа</a>
+
+    <br/>
+    <hr/>
+    <form method="post" name="logout" th:action="@{/logout}">
+        <input type="submit" value="Разлогиниться">
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous">
+
+</script>
+</body>
+</html>
