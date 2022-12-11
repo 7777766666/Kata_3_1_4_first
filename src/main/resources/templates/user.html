@@ -11,50 +11,54 @@
           crossorigin="anonymous">
     <title>Страница пользовтаеля</title>
 </head>
-<!--<body style="background-color: #F8F9FA">-->
 <body>
 <nav th:object="${user}" class="navbar navbar-dark bg-dark" style="background-color: #343A40">
     <h4>
-
         <a class="navbar-text text-white font-bold" style="text-decoration: none" th:text="${user.getEmail()}">Email</a>
-        <th:block th:object="${user}" >
+        <th:block th:object="${user}">
             <a class="text-white font-bold lead" style="text-decoration: none">with roles:</a>
-
-            <a class="text-white font-bold lead" style="text-decoration: none" th:each="item : *{roles}" th:text="${roles} + ' '">item about user/admin</a>
-
-
+            <a class="text-white font-bold lead" style="text-decoration: none" th:each="item : *{roles}"
+               th:text="${roles} + ' '">item about user/admin</a>
         </th:block>
-
-
         </div>
     </h4>
-            <form method="post" name="logout" th:action="@{/logout}">
-                <div class="text-forLogoutRight  ">
-                    <input class="btn btn-link text-second "  type="submit" value="Logout" style="color: #97948D; text-decoration: none" >  <!--убираем подчеркивание текст декоратион-->
-                </div>
-
-            </form>
-
+    <form method="post" name="logout" th:action="@{/logout}">
+        <div class="text-forLogoutRight  ">
+            <input class="btn btn-link text-second " type="submit" value="Logout"
+                   style="color: #97948D; text-decoration: none">  <!--убираем подчеркивание текст декоратион-->
         </div>
-    </div>
+    </form>
 </nav>
-
 <br/>
 <br/>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2" style="background-color: #FFFFFF">
-            <div class="row justify-content">
-                <div class="btn-group-vertical justify-content">
-                    <a class="btn btn-primary btn-md" href="/user" role="button">User</a>
+        <div class="col-md-2" style="background-color: #FFFFFF">
+            <ul class="nav nav-pills flex-column">
+                <div class="row justify-content">
+                    <div class="btn-group-vertical justify-content">
+                        <a class="btn btn-primary btn-md" href="/user" role="button">User</a>
+                    </div>
                 </div>
-            </div>
+            </ul>
         </div>
+<!--            <div class="row justify-content">-->
+<!--                <div class="btn-group-vertical justify-content">-->
+<!--                    <a class="btn btn-primary btn-md" href="/user" role="button">User</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
         <div class="col-md-10">
-            <h2>User information-page</h2>
+            <h2 class="card-title">User information</h2>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item active" role="presentation">
+                    <a class="nav-link" data-toggle="tab" href="#user" role="tab">About user</a>
+                </li>
+            </ul>
+
             <div class="container-fluid">
 
 
@@ -75,7 +79,6 @@
                                 <th>Last Name</th>
                                 <th>Age</th>
                                 <th>Email</th>
-                                <th>Password</th>
                                 <th>Role</th>
                             </tr>
                             </thead>
@@ -86,7 +89,6 @@
                                 <td th:text="${user.getLastname()}"></td>
                                 <td th:text="${user.getAge()}"></td>
                                 <td th:text="${user.getEmail()}"></td>
-                                <td th:text="${user.getPassword()}"></td>
                                 <td th:text="${roles}"></td>
                             </tr>
                             </tbody>
