@@ -11,19 +11,23 @@
           crossorigin="anonymous">
     <title>Страница пользовтаеля</title>
 </head>
-<body style="background-color: #F8F9FA">
+<!--<body style="background-color: #F8F9FA">-->
+<body>
+<nav th:object="${user}" class="navbar navbar-dark bg-dark" style="background-color: #343A40">
+    <h4>
 
-<nav class="navbar navbar-first" style="background-color: #343A40">
-    <div class="container-fluid">
-        <div class="navbar-header text-white">
-            <ul class="list-inline">
-                <li class="list-inline-item"><h5 th:text="${user.getEmail()}"></h5> </li>
-                <li class="list-inline-item"><h3 class="lead" th:text=" ' with roles: ' + ${roles}"></h3> </li> <!--class="lead" меняем шрифт   -->
+        <a class="navbar-text text-white font-bold" style="text-decoration: none" th:text="${user.getEmail()}">Email</a>
+        <th:block th:object="${user}" >
+            <a class="text-white font-bold lead" style="text-decoration: none">with roles:</a>
 
-            </ul>
+            <a class="text-white font-bold lead" style="text-decoration: none" th:each="item : *{roles}" th:text="${roles} + ' '">item about user/admin</a>
+
+
+        </th:block>
+
+
         </div>
-
-        <div>
+    </h4>
             <form method="post" name="logout" th:action="@{/logout}">
                 <div class="text-forLogoutRight  ">
                     <input class="btn btn-link text-second "  type="submit" value="Logout" style="color: #97948D; text-decoration: none" >  <!--убираем подчеркивание текст декоратион-->
@@ -96,12 +100,6 @@
 </div>
 
 
-
-<br>
-
-<!--<h4><a href="/admin">Если есть права админа, то можешь перейти в Админку </a></h4>-->
-
-<br>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
