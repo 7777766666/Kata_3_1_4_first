@@ -9,53 +9,72 @@
     <title>Список всех пользователей</title>
 </head>
 <body>
+<nav th:object="${userByUsername}" class="navbar navbar-dark bg-dark" style="background-color: #343A40">
+    <h4>
+        <a class="navbar-text text-white font-bold" style="text-decoration: none" th:text="${}">Email</a>
+        <th:block th:object="${user}">
+            <a class="text-white font-bold lead" style="text-decoration: none">with roles:</a>
+            <a class="text-white font-bold lead" style="text-decoration: none" th:each="item : *{roles}"
+               th:text="${roles} + ' '">item about user/admin</a>
+        </th:block>
+        </div>
+    </h4>
+    <form method="post" name="logout" th:action="@{/logout}">
+        <div class="text-forLogoutRight  ">
+            <input class="btn btn-link text-second " type="submit" value="Logout"
+                   style="color: #97948D; text-decoration: none">  <!--убираем подчеркивание текст декоратион-->
+        </div>
+    </form>
+</nav>
+<br/>
+<br/>
 
-<div>
+<!--<div>-->
 
-    <table border="1">
-        <caption>
-            <h1>Список пользователей</h1>
-        </caption>
-        <tr>
+<!--    <table border="1">-->
+<!--        <caption>-->
+<!--            <h1>Список пользователей</h1>-->
+<!--        </caption>-->
+<!--        <tr>-->
 
-            <th>Id</th>
-            <th>Name</th>
-            <th>Lastname</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Roles</th>
+<!--            <th>Id</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Lastname</th>-->
+<!--            <th>Age</th>-->
+<!--            <th>Email</th>-->
+<!--            <th>Password</th>-->
+<!--            <th>Roles</th>-->
 
-            <th>Действия</th>
-        </tr>
-        <tr th:each="user : ${userList}">
-            <td th:utext="${user.getId()}">VALUE</td>
-            <td th:utext="${user.getName()}">VALUE</td>
-            <td th:utext="${user.getLastname()}">VALUE</td>
-            <td th:utext="${user.getAge()}">VALUE</td>
-            <td th:utext="${user.getEmail()}">VALUE</td>
-            <td th:utext="${user.getPassword()}">VALUE</td>
-            <td>
-                <div th:each="role:${user.getRoles()}">[[${role.getName()}]]</div>
-            </td>
+<!--            <th>Действия</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="user : ${userList}">-->
+<!--            <td th:utext="${user.getId()}">VALUE</td>-->
+<!--            <td th:utext="${user.getName()}">VALUE</td>-->
+<!--            <td th:utext="${user.getLastname()}">VALUE</td>-->
+<!--            <td th:utext="${user.getAge()}">VALUE</td>-->
+<!--            <td th:utext="${user.getEmail()}">VALUE</td>-->
+<!--            <td th:utext="${user.getPassword()}">VALUE</td>-->
+<!--            <td>-->
+<!--                <div th:each="role:${user.getRoles()}">[[${role.getName()}]]</div>-->
+<!--            </td>-->
 
-            <td>
-                <a th:href="@{/admin/editUser/{id}(id=${user.getId()})}">
-                    <input type="submit" value="РЕДАКТИРОВАТЬ"/>
-                </a>
-                <br>
-                <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.getId()})}">
-                    <input type="submit" value="УДАЛИТЬ"/>
-                </form>
-            </td>
-        </tr>
-    </table>
-    <br>
+<!--            <td>-->
+<!--                <a th:href="@{/admin/editUser/{id}(id=${user.getId()})}">-->
+<!--                    <input type="submit" value="РЕДАКТИРОВАТЬ"/>-->
+<!--                </a>-->
+<!--                <br>-->
+<!--                <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.getId()})}">-->
+<!--                    <input type="submit" value="УДАЛИТЬ"/>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <br>-->
 
-    <h4><a href="/admin/newUserAdmin">Добавить пользователя</a></h4>
+<!--    <h4><a href="/admin/newUserAdmin">Добавить пользователя</a></h4>-->
 
 
-    <hr/>
+<!--    <hr/>-->
     <a href="/user">Личная страница пользователя с правами Админа</a>
 
     <br/>

@@ -19,6 +19,7 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -37,8 +38,12 @@ public class AdminController {
     }
 
     @GetMapping
-    public String getUser(Model model) {
+    public String getUser(Model model, Principal principal) {
+    //    model.addAttribute("admin", user)
         model.addAttribute("userList", userService.getList());
+        model.addAttribute("userByUsername", userService.loadUserByUsername(principal.getName()));
+  //      model.addAttribute("allUsers", userService.)
+        model.addAttribute("roleList", roleService.listByRole((List<String>) principal));
         return "admin";
     }
 
